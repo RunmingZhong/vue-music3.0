@@ -1,6 +1,11 @@
-// const { defineConfig } = require('@vue/cli-service')
+const registerRouter = require('./backend/router')
+
 module.exports = {
-  css:{
+  transpileDependencies: true,
+  
+  lintOnSave: false,
+
+  css: {
     loaderOptions: {
       sass: {
         // 全局引入变量和 mixin
@@ -10,5 +15,11 @@ module.exports = {
         `
       }
     }
+  },
+  devServer: {
+    before(app) {
+      registerRouter(app)
+    }
   }
+
 }

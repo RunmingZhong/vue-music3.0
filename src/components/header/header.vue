@@ -9,9 +9,6 @@
 </template>
 
 <script>
-  import '@/assets/scss/mixin.scss'
-  import '@/assets/scss/variable.scss'
-
   export default {
     name: 'm-header'
   }
