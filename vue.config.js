@@ -1,10 +1,10 @@
+const { defineConfig } = require('@vue/cli-service')
 const registerRouter = require('./backend/router')
 
-module.exports = {
-  transpileDependencies: true,
-  
+module.exports = defineConfig({
+  // transpileDependencies: true,
+  publicPath: process.env.NODE_ENV === 'production' ? '/music-next/' : '/',
   lintOnSave: false,
-
   css: {
     loaderOptions: {
       sass: {
@@ -17,9 +17,9 @@ module.exports = {
     }
   },
   devServer: {
-    before(app) {
-      registerRouter(app)
+    onBeforeSetupMiddleware(app) {
+      registerRouter(app.app)
     }
   }
-
-}
+  
+})
